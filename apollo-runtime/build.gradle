@@ -8,6 +8,8 @@ dependencies {
   compile dep.cache
   compile project(":apollo-api")
 
+  implementation 'com.google.code.gson:gson:2.8.5'
+
   testCompile dep.junit
   testCompile dep.truth
   testCompile dep.mockWebServer
