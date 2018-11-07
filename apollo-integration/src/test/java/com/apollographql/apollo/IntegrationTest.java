@@ -1,5 +1,7 @@
 package com.apollographql.apollo;
 
+import com.apollographql.apollo.integration.normalizer.HeroAndFriendsWithFragmentsQuery;
+import com.apollographql.apollo.integration.normalizer.type.Episode;
 import com.google.common.base.Charsets;
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
@@ -153,6 +155,20 @@ public class IntegrationTest {
             + "  climates"
             + "  surfaceWater"
             + "}\",\"operationName\":\"AllPlanets\",\"variables\":{}}");
+  }
+
+  @SuppressWarnings({"ConstantConditions", "CheckReturnValue"})
+  @Test public void heroAndFriendsWithFragmentsQuery() throws Exception {
+    server.enqueue(mockResponse("HeroAndFriendsWithFragmentResponse.json"));
+
+    assertResponse(
+        apolloClient.query(new HeroAndFriendsWithFragmentsQuery(Input.fromNullable(Episode.NEWHOPE))),
+        new Predicate<Response<HeroAndFriendsWithFragmentsQuery.Data>>() {
+          @Override
+          public boolean test(Response<HeroAndFriendsWithFragmentsQuery.Data> dataResponse) throws Exception {
+            return false;
+          }
+        });
   }
 
   @Test public void error_response() throws Exception {

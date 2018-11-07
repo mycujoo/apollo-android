@@ -37,12 +37,16 @@ dependencies {
   compile project(':apollo-rx-support')
   compile project(':apollo-rx2-support')
   compile project(':apollo-http-cache')
+  compile project(':apollo-api')
   compile dep.appcompat
-
+  compile dep.rxjava2
+  compile dep.cache
   testCompile dep.junit
   testCompile dep.truth
   testCompile dep.mockWebServer
   testCompile dep.okhttpTestSupport
+  testCompile 'com.google.code.gson:gson:2.8.5'
+
 }
 
 apollo {

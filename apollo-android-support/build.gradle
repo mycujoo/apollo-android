@@ -44,6 +44,7 @@ dependencies {
   androidTestCompile(dep.testRunner) {
     exclude module: 'support-annotations'
   }
+  androidTestCompile "com.android.support.test:runner:1.0.2"
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
